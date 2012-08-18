@@ -4,15 +4,16 @@ Ext.define("searchapp.view.Searchresults", {
     xtype: 'sresultspanel',
 
      config:{
-        title: 'Results',
+        title: 'Saved Results',
         iconCls: 'star',
 
         items: {
             xtype:'list',
-            itemTpl:'<h2>{titleNoFormatting} </h2><p>{content}</p>',
-            title: 'Searchresults',
+            itemTpl:'<h2>{title}:</h2> <p> {content}</p>',
+            title: 'Last Results',
             store: 'Searchstore',
-            fullscreen: true,  
+            fullscreen: true,
+            style: 'font-size:0.9em;',
         }
     }
    

@@ -10,18 +10,20 @@ Ext.define('searchapp.view.Main', {
             layout: {
                 pack: 'center'
             },
-           // hidden:true
+            //hidden:true
         },
+
         items: [
             {
                 xtype:'homepanel'
             }, 
             {   
-                xtype:'searchpanel'
+                xtype:'sresultspanel'
             },
             {   
-                xtype:'sresultspanel'
-            }
+                xtype:'searchpanel',
+                socrollable:false,
+            },
         ]
     }
 });

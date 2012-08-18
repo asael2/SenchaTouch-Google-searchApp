@@ -30,6 +30,7 @@ Ext.define('searchapp.controller.Main', {
     },
     loginUser: function(){
         this.getTabsPanel().setActiveItem(1); //default loggedin panel
+        
     },
 
     logUser: function() {

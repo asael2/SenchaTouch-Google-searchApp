@@ -11,7 +11,7 @@ Ext.define('searchapp.view.Search', {
         title: 'Web Search',
         xtype: 'panel',
         iconCls: 'search',
-        socrollable:false,
+       
         //fullscreen:true,
         items: [
             {
@@ -48,7 +48,7 @@ Ext.define('searchapp.view.Search', {
                 height: 400,
                 items:{
                     xtype:'list',
-                    style: 'background-color: #fff; text-align:center; padding:8px',
+                    style: 'background-color: #fff; font-size',
                     id:'historyList',
                     store: 'Historystore',
                     itemTpl:'<b>{sQuery}</b> <br> <small>{reqTime}</small>',
@@ -56,12 +56,7 @@ Ext.define('searchapp.view.Search', {
 
             }
         
-        ],
-        
-        submit:function(){
-            console.log('en submit');
-        },
-      
+        ],      
     }
    
 });

@@ -61,9 +61,6 @@ var searchController = Ext.define('searchapp.controller.Search', {
         loadingMask.setMasked({
             xtype: 'loadmask',
             message: 'Loading...', 
-            cosa: function(){
-                console.log("Bongoo!!");
-            }
         });
 
         var petition = Ext.data.JsonP.request({
@@ -87,7 +84,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
 
             },
             error: function(){
-                 Ext.Msg.alert("No data response");
+                Ext.Msg.alert("No data response");
             }
         });
 
@@ -107,7 +104,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
             var addResults =  Ext.getStore('Searchstore').add(resultados);
             var saveResults = Ext.getStore('Searchstore').sync();
             
-            var showResults = Ext.getCmp('tabsPanel').setActiveItem(2);
+            var showResults = Ext.getCmp('tabsPanel').setActiveItem(1);
 
         };
 

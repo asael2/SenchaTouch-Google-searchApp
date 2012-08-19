@@ -12,15 +12,12 @@ Ext.define('searchapp.controller.Main', {
         'Ext.data.identifier.Uuid',
     ], 
     config: {    
-        views : ['Home', 'Main', 'Search', 'Searchresults'],
-        stores: ['Userstore', 'Searchstore', 'Historystore'],
-        models: ['User', 'Search', 'Agenda'],
+        views : ['Home'],
+        stores: ['Userstore', 'Historystore'],
+        models: ['User', 'Agenda'],
         refs: {
-            TabsPanel: '#tabsPanel',
             LoginForm: 'loginform',
             loginBtn: '#loginBtn',
-            searchBtn: '#searchBtn',
-            LaNavBar: '#navBar'
         },
         control: {
             loginBtn: {
@@ -29,8 +26,9 @@ Ext.define('searchapp.controller.Main', {
         }    
     },
     loginUser: function(){
-        this.getTabsPanel().setActiveItem(1); //default loggedin panel
-        
+        var paneltab = Ext.create('searchapp.view.Main');
+        Ext.getCmp('loginPanel').destroy();
+        Ext.Viewport.add(paneltab);
     },
 
     logUser: function() {

@@ -1,11 +1,9 @@
 var homeView = Ext.define('searchapp.view.Home', {
-	extend: 'Ext.Panel',
-	xtype: 'homepanel',
-		
+    extend: 'Ext.Panel', 
+    id :'loginPanel',
+	xtype: 'loginpanel',	
 	config:{
-		cardSwitchAnimation: 'slide',
-		title: 'Home',
-    	iconCls: 'home',
+	cardSwitchAnimation: 'slide',
 		scrollable: true,
 		styleHtmlContent: true,
     	items: [
@@ -62,10 +60,7 @@ Ext.define('searchapp.form.Panel', {
 				text: 'log in',
 				formBind: true,
 				ui: 'confirm',
-				/*handler: function() {
-				    
-				//
-				}*/
+				/*handler: function() {}*/
 			}
 		]
 	}

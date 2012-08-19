@@ -1,5 +1,4 @@
-var searchController = Ext.define('searchapp.controller.Search', {
-   
+var searchController = Ext.define('searchapp.controller.Search', {  
     extend: 'Ext.app.Controller',
     requires:[
         'Ext.dataview.List',
@@ -19,6 +18,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
         refs: {
             TabsPanel: '#tabsPanel',
             ResultsPanel: '#searchViewPanel',
+            ResultsList: '#resultsList',
             searchQuery:'#queryId',
             sBtn: '#searchBtn',
 
@@ -32,29 +32,30 @@ var searchController = Ext.define('searchapp.controller.Search', {
             },
             ResultsPanel:{
                 submit: 'doSearch'
-            }
+            },
+            ResultsList:{
+                onItemDisclosure: 'resultDetails'  
+            },
 
         }    
     },
 
-    doSearch : function(query){
-        
+    doSearch : function(query){        
         var searchQ = this.getSearchQuery().getValue(); 
-        
         if(searchQ !== ''){
             this.searchRequest(searchQ);
         }else{
-             Ext.Msg.alert("Please write a search");
-        }     
+            Ext.Msg.alert("Please write a search");
+        };
     },
-
+    resultDetails: function(list, index, node, record){       
+        console.log('onItemDisclosure<<<<<<<');
+    },
     reSearch: function(list, index, node, record){
       this.searchRequest(record.get('sQuery'));
     },
 
     searchRequest : function(searchQ, lastStore){ 
-        
-
 
         var loadingMask =  this.getResultsPanel();
 
@@ -106,6 +107,16 @@ var searchController = Ext.define('searchapp.controller.Search', {
             
             var showResults = Ext.getCmp('tabsPanel').setActiveItem(1);
 
+            //var toolbar = Ext.ComponentQuery.query('toolbar')[0],
+
+            //var toolbarTitle = Ext.ComponentQuery.query('resultsBar').getTitle();
+
+
+
+      //newTitle = searchQ; 
+
+
+        //    toolbar.setTitle(newTitle);  
         };
 
     }

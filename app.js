@@ -31,10 +31,9 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        //searchapp.searchStore.load();
-        // Initialize the main view
-        var query = 'Armadillo';
-        Ext.Viewport.add(Ext.create('searchapp.view.Main'));
+       
+        // Initialize the main view (Home)
+        Ext.Viewport.add(Ext.create('searchapp.view.Home'));
     },
 
     onUpdated: function() {

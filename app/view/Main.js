@@ -2,27 +2,21 @@ Ext.define('searchapp.view.Main', {
     extend: 'Ext.tab.Panel', 
     id :'tabsPanel',
     config: {
+    showAnimation :'slide',
         fullscreen: true,
-
         tabBar: {
             id: 'navBar',
             docked: 'bottom',
             layout: {
                 pack: 'center'
             },
-            //hidden:true
         },
-
         items: [
-            {
-                xtype:'homepanel'
-            }, 
             {   
-                xtype:'sresultspanel'
+                xtype:'searchpanel'
             },
             {   
-                xtype:'searchpanel',
-                socrollable:false,
+                xtype:'sresultspanel'
             },
         ]
     }

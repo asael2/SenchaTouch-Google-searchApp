@@ -1,4 +1,4 @@
-var mystore = Ext.define("searchapp.store.Userstore", {
+Ext.define("searchapp.store.Userstore", {
     extend: 'Ext.data.Store',
     config: {
         model: 'searchapp.model.User',

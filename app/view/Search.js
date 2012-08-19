@@ -1,63 +1,76 @@
 
 Ext.define('searchapp.view.Search', { 
-    extend: 'Ext.form.FormPanel',
+    extend: 'Ext.Panel',
     xtype:'searchpanel',
-    //requires: ['Ext.dataview.List'], 
-
     layout: 'fit',
     id: 'searchViewPanel',
-    
     config: {
         title: 'Web Search',
         xtype: 'panel',
         iconCls: 'search',
-       
-        //fullscreen:true,
         items: [
+            //Header (Google logo)
             {
                 html :'<img src="resources/images/logolog.png" />',
                 style: 'background-color: #fff; text-align:center; padding:8px',
             },
-
+            //Search Form (SearchPanel)
             {
-                xtype:'panel',
-                id:'searchform',
-                items:[
+                xtype:'searchform',
+                scrollable: false
+            },
+            //History List
+            {
+                xtype: 'panel',
+                id: 'historyListContainer',
+               // flex: 2,
+                layout: 'fit',
+                //style: 'background-color: red;',
+                height: 400,
+                items:{
+                    xtype:'list',
+                    style: 'background-color: #fff; font-size:0.8em; margin-top:8px',
+                    id:'historyList',
+                    store: 'Historystore',
+                    itemTpl:'<b>{sQuery}</b> <br> <small>{reqTime}</small>',
+                }
+
+            }        
+        ],      
+    }
+});
+
+Ext.define('searchapp.form.SearchPanel', {
+    extend: 'Ext.form.Panel',
+    xtype: 'searchform',
+    id: 'googleSearchForm',
+    config: {
+        items: [
+            //fieldset
+            {
+                xtype:'fieldset',
+                items: [
                     {
                         xtype: 'searchfield',
                         name: 'q',
                         id: 'queryId',
                         value: '',
                         placeHolder: 'write your search'
-                    },
-                    {
-                        xtype: 'button',
-                        id: 'searchBtn',
-                        text: 'Search',
-                        ui: 'action',
-                        style:'margin:10px;'
-                    },
+                    }, 
                 ]
-            },  
+            },
+            //submit button
             {
-                xtype: 'panel',
-                id: 'historyListContainer',
-                flex: 2,
-                    layout: 'fit',
-                style: 'background-color: red;',
-                height: 400,
-                items:{
-                    xtype:'list',
-                    style: 'background-color: #fff; font-size',
-                    id:'historyList',
-                    store: 'Historystore',
-                    itemTpl:'<b>{sQuery}</b> <br> <small>{reqTime}</small>',
+                xtype: 'button',
+                value:'submit',
+                ui: 'action',
+                id: 'searchBtn',
+                text: 'Search',
+                style:'margin:10px;',
+                handler: function(){
+                    console.log("Search!");
                 }
-
-            }
-        
-        ],      
+            },
+        ]
     }
-   
 });
-

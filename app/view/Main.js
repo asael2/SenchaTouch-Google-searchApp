@@ -4,9 +4,10 @@ Ext.define('searchapp.view.Main', {
     config: {
     showAnimation :'slide',
         fullscreen: true,
+        
         tabBar: {
             id: 'navBar',
-            docked: 'top',
+            docked: 'bottom',
             layout: {
                 pack: 'center'
             },

@@ -8,10 +8,21 @@ Ext.define('searchapp.view.Search', {
         xtype: 'panel',
         iconCls: 'search',
         items: [
+            {   
+                xtype: 'toolbar',
+                docked:'top',
+                items:[
+                    {
+                        text:'Clear History',
+                        action: 'clearHistory',
+                        align: 'right',
+                    }
+                ]
+            },      
             //Header (Google logo)
             {
                 html :'<img src="resources/images/logolog.png" />',
-                style: 'background-color: #fff; text-align:center; padding:8px',
+                style: 'background-color: #fff; text-align:center; padding:12px 6px;',
             },
             //Search Form (SearchPanel)
             {
@@ -32,12 +43,12 @@ Ext.define('searchapp.view.Search', {
                     store: 'Historystore',
                     itemTpl:'<b>{sQuery}</b> <br> <small>{reqTime}</small>',
                 }
-
-            }        
+            },
         ],      
     }
 });
 
+//Search Form
 Ext.define('searchapp.form.SearchPanel', {
     extend: 'Ext.form.Panel',
     xtype: 'searchform',

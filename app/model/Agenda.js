@@ -10,9 +10,11 @@ Ext.define('searchapp.model.Agenda', {
         proxy: {
             type: "localstorage",
             id: "Agenda"            
-        }
+        },
 
+        identifier: {
+            type: 'uuid'
+        },
     }
 });
-
 

@@ -22,6 +22,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
             Resultados:'#resultsPanel',
             searchQuery:'#queryId',
             sBtn: '#searchBtn',
+            clearHButton: 'button[action=clearHistory]',
 
         },
         control: {
@@ -36,6 +37,12 @@ var searchController = Ext.define('searchapp.controller.Search', {
             },
             ResultsList:{
                 itemtap: 'resultDetails'  
+            },
+            clearHButton:{
+                tap: function(){
+                   var clearHistorystore = Ext.getStore('Historystore').removeAll();
+                   var syncHistorystore = Ext.getStore('Historystore').sync();
+                }
             }
         }    
     },
@@ -48,22 +55,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
             Ext.Msg.alert("Please write a search");
         };
     },
-    resultDetails: function(list, index, node, record){       
-        var eltitle = record.data.title;
-        var elcontent = record.data.content;
-        var elUrl = record.data.url;
-        
-        // search > result > details : panel 
-        this.getResultados().push({
-            xtype:'panel',
-            title: eltitle,
-            html: elcontent,
-            scrollable:true,
-            styleHtmlContent:true,
 
-        });
-
-    },
     reSearch: function(list, index, node, record){
       this.searchRequest(record.get('sQuery'));
     },
@@ -110,19 +102,36 @@ var searchController = Ext.define('searchapp.controller.Search', {
             };
             
             // add and sort search History record
-            var addHistory =  Ext.getStore('Historystore').add({'sQuery': searchQ, 'reqTime': getDate(), });
-            var sortResults = Ext.getStore('Historystore').sort('reqTime', 'DESC'); 
+            var addHistorystore =  Ext.getStore('Historystore').add({'sQuery': searchQ, 'reqTime': getDate(), });
+            var sortHistorystore = Ext.getStore('Historystore').sort('reqTime', 'DESC'); 
+            var syncHistorystore = Ext.getStore('Historystore').sync(); 
             
             //update results store
-            var clearStore =  Ext.getStore('Searchstore').removeAll();
-            var addResults =  Ext.getStore('Searchstore').add(resultados);
-            var saveResults = Ext.getStore('Searchstore').sync();
+            var clearSearchstore =  Ext.getStore('Searchstore').removeAll();
+            var addSearchstore =  Ext.getStore('Searchstore').add(resultados);
+            var syncSearchstore = Ext.getStore('Searchstore').sync();
 
             //change view
             var showResults = Ext.getCmp('tabsPanel').setActiveItem(1);
         };
 
-    }
+    },
+
+    resultDetails: function(list, index, node, record){       
+        var eltitle = record.data.title;
+        var elcontent = record.data.content;
+        var elUrl = record.data.url;
+        
+        // search > result > details : panel 
+        this.getResultados().push({
+            xtype:'panel',
+            title: eltitle,
+            html: '<h3>'+eltitle+'</h3><p>'+elcontent+'</p> <p> <a target="blank" href=" '+elUrl+' "> '+elUrl+' </a> </p>'  ,
+            scrollable:true,
+            styleHtmlContent:true,
+
+        });
+
+    },
 
 });
-

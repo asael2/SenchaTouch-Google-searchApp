@@ -23,9 +23,7 @@ Ext.define('searchapp.view.Search', {
             {
                 xtype: 'panel',
                 id: 'historyListContainer',
-               // flex: 2,
                 layout: 'fit',
-                //style: 'background-color: red;',
                 height: 400,
                 items:{
                     xtype:'list',
@@ -55,7 +53,7 @@ Ext.define('searchapp.form.SearchPanel', {
                         name: 'q',
                         id: 'queryId',
                         value: '',
-                        placeHolder: 'write your search'
+                        placeHolder: 'write your search',
                     }, 
                 ]
             },
@@ -63,13 +61,13 @@ Ext.define('searchapp.form.SearchPanel', {
             {
                 xtype: 'button',
                 value:'submit',
+                action: 'submit',
                 ui: 'action',
                 id: 'searchBtn',
                 text: 'Search',
-                style:'margin: 010px;',
-                handler: function(){
-                    console.log("Search!");
-                }
+                style:'margin: 10px;',
+                /*handler: function(){
+                },*/
             },
         ]
     }

@@ -117,19 +117,9 @@ var searchController = Ext.define('searchapp.controller.Search', {
             var clearStore =  Ext.getStore('Searchstore').removeAll();
             var addResults =  Ext.getStore('Searchstore').add(resultados);
             var saveResults = Ext.getStore('Searchstore').sync();
-            
+
+            //change view
             var showResults = Ext.getCmp('tabsPanel').setActiveItem(1);
-
-            //var toolbar = Ext.ComponentQuery.query('toolbar')[0],
-
-            //var toolbarTitle = Ext.ComponentQuery.query('resultsBar').getTitle();
-
-
-
-      //newTitle = searchQ; 
-
-
-        //    toolbar.setTitle(newTitle);  
         };
 
     }

@@ -6,7 +6,7 @@ Ext.define('searchapp.view.Main', {
         fullscreen: true,
         tabBar: {
             id: 'navBar',
-            docked: 'bottom',
+            docked: 'top',
             layout: {
                 pack: 'center'
             },

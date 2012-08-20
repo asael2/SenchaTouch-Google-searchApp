@@ -1,4 +1,3 @@
-
 Ext.define('searchapp.view.Search', { 
     extend: 'Ext.Panel',
     xtype:'searchpanel',
@@ -17,7 +16,8 @@ Ext.define('searchapp.view.Search', {
             //Search Form (SearchPanel)
             {
                 xtype:'searchform',
-                scrollable: false
+                scrollable: false,
+                style: 'padding:8px;',
             },
             //History List
             {
@@ -66,7 +66,7 @@ Ext.define('searchapp.form.SearchPanel', {
                 ui: 'action',
                 id: 'searchBtn',
                 text: 'Search',
-                style:'margin:10px;',
+                style:'margin: 010px;',
                 handler: function(){
                     console.log("Search!");
                 }

@@ -18,7 +18,8 @@ var searchController = Ext.define('searchapp.controller.Search', {
         refs: {
             TabsPanel: '#tabsPanel',
             ResultsPanel: '#searchViewPanel',
-            ResultsList: '#resultsList',
+            ResultsList: 'sresultspanel list',
+            Resultados:'#resultsPanel',
             searchQuery:'#queryId',
             sBtn: '#searchBtn',
 
@@ -34,9 +35,8 @@ var searchController = Ext.define('searchapp.controller.Search', {
                 submit: 'doSearch'
             },
             ResultsList:{
-                onItemDisclosure: 'resultDetails'  
-            },
-
+                itemtap: 'resultDetails'  
+            }
         }    
     },
 
@@ -49,7 +49,20 @@ var searchController = Ext.define('searchapp.controller.Search', {
         };
     },
     resultDetails: function(list, index, node, record){       
-        console.log('onItemDisclosure<<<<<<<');
+        var eltitle = record.data.title;
+        var elcontent = record.data.content;
+        var elUrl = record.data.url;
+        
+        // search > result > details : panel 
+        this.getResultados().push({
+            xtype:'panel',
+            title: eltitle,
+            html: elcontent,
+            scrollable:true,
+            styleHtmlContent:true,
+
+        });
+
     },
     reSearch: function(list, index, node, record){
       this.searchRequest(record.get('sQuery'));

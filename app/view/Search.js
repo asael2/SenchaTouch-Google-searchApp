@@ -11,6 +11,7 @@ Ext.define('searchapp.view.Search', {
             {   
                 xtype: 'toolbar',
                 docked:'top',
+                layout: { pack: 'right' },
                 items:[
                     {
                         text:'Clear History',

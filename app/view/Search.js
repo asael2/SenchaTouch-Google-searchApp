@@ -8,10 +8,14 @@ Ext.define('searchapp.view.Search', {
         xtype: 'panel',
         iconCls: 'search',
         items: [
+            //toolbar button
             {   
                 xtype: 'toolbar',
-                docked:'top',
-                layout: { pack: 'right' },
+                //docked:'bottom',
+
+                layout: { 
+                    pack: 'right' 
+                },
                 items:[
                     {
                         text:'Clear History',

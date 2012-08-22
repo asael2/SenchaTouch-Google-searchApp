@@ -23,7 +23,6 @@ var searchController = Ext.define('searchapp.controller.Search', {
             searchQuery:'#queryId',
             sBtn: '#searchBtn',
             clearHButton: 'button[action=clearHistory]',
-
         },
         control: {
             sBtn: {
@@ -46,6 +45,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
             }
         }    
     },
+    
     searchQ: function(){
         var query = this.getSearchQuery().getValue(); 
         return query
@@ -118,12 +118,10 @@ var searchController = Ext.define('searchapp.controller.Search', {
             //change view
             var showResults = Ext.getCmp('tabsPanel').setActiveItem(1);
         };
-
     },
 
     resultDetails: function(list, index, node, record){       
         var resultsTitle = this.searchQ();
-        console.log(resultsTitle);
         var eltitle = record.data.title;
         var elcontent = record.data.content;
         var elUrl = record.data.url;
@@ -137,7 +135,6 @@ var searchController = Ext.define('searchapp.controller.Search', {
             styleHtmlContent:true,
 
         });
-
     },
 
 });

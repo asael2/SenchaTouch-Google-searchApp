@@ -74,7 +74,7 @@ Ext.define('searchapp.form.SearchPanel', {
                 xtype: 'button',
                 value:'submit',
                 action: 'submit',
-                ui: 'action',
+                ui: 'confirm',
                 id: 'searchBtn',
                 text: 'Search',
                 style:'margin: 10px;',

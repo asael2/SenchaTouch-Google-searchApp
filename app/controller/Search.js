@@ -46,9 +46,13 @@ var searchController = Ext.define('searchapp.controller.Search', {
             }
         }    
     },
+    searchQ: function(){
+        var query = this.getSearchQuery().getValue(); 
+        return query
+    },
 
-    doSearch : function(query){        
-        var searchQ = this.getSearchQuery().getValue(); 
+    doSearch : function(query){  
+        var searchQ = this.searchQ();
         if(searchQ !== ''){
             this.searchRequest(searchQ);
         }else{
@@ -118,6 +122,8 @@ var searchController = Ext.define('searchapp.controller.Search', {
     },
 
     resultDetails: function(list, index, node, record){       
+        var resultsTitle = this.searchQ();
+        console.log(resultsTitle);
         var eltitle = record.data.title;
         var elcontent = record.data.content;
         var elUrl = record.data.url;
@@ -125,7 +131,7 @@ var searchController = Ext.define('searchapp.controller.Search', {
         // search > result > details : panel 
         this.getResultados().push({
             xtype:'panel',
-            title: eltitle,
+            title: resultsTitle,
             html: '<h3>'+eltitle+'</h3><p>'+elcontent+'</p> <p> <a target="blank" href=" '+elUrl+' "> '+elUrl+' </a> </p>'  ,
             scrollable:true,
             styleHtmlContent:true,
